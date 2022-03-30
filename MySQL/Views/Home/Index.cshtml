@@ -16,6 +16,7 @@
             <td>State</td>
             <td>Zip</td>
             <td>Phone</td>
+            <td>Team ID</td>
         </tr>
     </thead>
 
@@ -29,6 +30,7 @@
             <td>@x.BowlerState</td>
             <td>@x.BowlerZip</td>
             <td>@x.BowlerPhoneNumber</td>
+            <td><a asp-controller="Home" asp-action="Filter" asp-route-team_id="@x.TeamID">@x.TeamID</a></td>
             <td><a asp-controller="Home" asp-action="Edit" asp-route-bowl_id="@x.BowlerID">Edit</a></td>
             <td><a asp-controller="Home" asp-action="Delete" asp-route-bowl_id="@x.BowlerID">Delete</a></td>
                 <td><a type="hidden" asp-route-temp_id ="@x.BowlerID"/></td>

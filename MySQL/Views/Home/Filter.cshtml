@@ -1,0 +1,44 @@
+﻿@{
+}
+
+@model MySQL.Models.ViewModels.Bowling
+
+<h1>@Model.team.TeamName</h1>
+
+<table class="table-bordered table-striped">
+
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Bowler Name</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zip</td>
+            <td>Phone</td>
+            <td>Team ID</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model.bowlers)
+        {
+            <tr>
+                <td>@x.BowlerLastName, @x.BowlerFirstName @x.BowlerMiddleInit</td>
+                <td>@x.BowlerAddress</td>
+                <td>@x.BowlerCity</td>
+                <td>@x.BowlerState</td>
+                <td>@x.BowlerZip</td>
+                <td>@x.BowlerPhoneNumber</td>
+                <td><a asp-controller="Home" asp-action="Filter" asp-route-team_id="@x.TeamID">@x.TeamID</a></td>
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-bowl_id="@x.BowlerID">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-bowl_id="@x.BowlerID">Delete</a></td>
+                <td><a type="hidden" asp-route-temp_id="@x.BowlerID" /></td>
+                <td><input type="hidden" asp-for="@x.BowlerID" /></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+

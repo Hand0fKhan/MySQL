@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MySQL.Models;
+using MySQL.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,6 +22,14 @@ namespace MySQL.Controllers
         {
             var x = context.Bowlers.ToList();
             return View(x);
+        }
+
+        public IActionResult Filter(int team_id)
+        {
+            var z = new Bowling();
+            z.bowlers = context.Bowlers.Where(x => x.TeamID == team_id).ToList();
+            z.team = context.Teams.FirstOrDefault(x => x.TeamID == team_id);
+            return View(z);
         }
 
         [HttpGet]
